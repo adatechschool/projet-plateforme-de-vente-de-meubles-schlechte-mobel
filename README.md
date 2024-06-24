@@ -35,4 +35,12 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+## LUNDI 24 JUIN - DÉBUT PROJET ##
+
+## Front 
+Découpage URL localhost:3000/pageaccueil/meubles/détails_meubles
+trois découpages front
+Découpage différent du front, par ex une request suffisante pour fetch les meubles sur les trois pages
+
+
 test
