@@ -49,3 +49,11 @@ Découpage différent du front, par ex une request suffisante pour fetch les meu
 Découpage URL localhost:3000/pageaccueil/meubles/détails_meubles
 trois découpages front
 Découpage différent du front, par ex une request suffisante pour fetch les meubles sur les trois pages
+
+
+## LUNDI 24 JUIN - DÉBUT PROJET ##
+
+## Front 
+Découpage URL localhost:3000/pageaccueil/meubles/détails_meubles
+trois découpages front
+Découpage différent du front, par ex une request suffisante pour fetch les meubles sur les trois pages
