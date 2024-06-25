@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "express": "^4.19.2",
     "next": "14.2.4",
+    "pg": "^8.12.0",
+    "express": "^4.19.2",
     "react": "^18",
     "react-dom": "^18"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
   }
 }
