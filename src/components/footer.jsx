@@ -1,14 +1,24 @@
-import React from "react";
-// import styles from "./Footer.module.css"; // Utilisation de CSS Modules pour le style
+"use client";
 
-function Footer() {
+import React from "react";
+import { Facebook, Instagram, Linkedin, Mail, Twitter } from "lucide-react";
+
+const Footer = () => {
   return (
-    <footer className="flex absolute justify-between items-center p-4 bottom-0 h-14 w-full bg-red-500">
-      <a href="/">Nos réseaux</a>
-      <a href="/about">Nous contacter</a>
-      <a href="/contact">Propriétaire</a>
-    </footer>
+    <div className="flex items-center h-16 p-4 justify-between bottom-0 absolute w-full bg-indigo-300">
+      <div className="flex items-center justify-center gap-3">
+        <Instagram />
+        <Twitter />
+        <Facebook />
+        <Linkedin />
+      </div>
+      <div className="flex items-center justify-center gap-2">
+        <Mail />
+        Nous contacter
+      </div>
+      <div>Propriétaire</div>
+    </div>
   );
-}
+};
 
 export default Footer;
