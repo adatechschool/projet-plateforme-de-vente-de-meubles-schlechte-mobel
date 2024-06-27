@@ -44,7 +44,7 @@ const FormSellingFurniture = () => {
       <div className="flex-1 min-h-full backdrop-blur-sm bg-white/10 w-full flex items-center justify-center">
         <div className="backdrop-blur-sm bg-white/30 rounded-xl w-2/3 h-96 flex flex-col justify-center items-center gap-3">
           <div className="flex flex-col justify-center items-center gap-4">
-            <p className="text-md font-bold">Je vends mon meuble</p>
+            <p className="text-xl font-bold">Je vends mon meuble</p>
             <SellingFurniture />
           </div>
         </div>

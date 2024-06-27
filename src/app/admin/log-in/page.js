@@ -38,9 +38,8 @@ const AdminPage = () => {
     <div className="flex-1 min-h-full bg-cover bg-[url('/admin.jpg')] flex flex-col items-start justify-start w-full">
       <div className="flex-1 min-h-full bg-white/10 w-full flex items-center justify-center">
         <div className="backdrop-blur-sm bg-white/10 rounded-xl w-1/3 h-96 flex flex-col justify-center items-center gap-3">
-          <p>
-            <br />
-          </p>
+          <p className="text-xl font-bold">Mon site</p>
+
           <EmailInput />
           <PassWordInput />
           <ButtonNewConnection />

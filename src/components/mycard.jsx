@@ -4,7 +4,7 @@ export function MyCard(props) {
   return (
     <Card
       href="#"
-      className="max-w-sm bg-opacity-80 backdrop-blur-md bg-[#ffedd8] rounded-md"
+      className="max-w-sm bg-opacity-80 backdrop-blur-sm bg-white/30 bg-[#ffedd8] rounded-md"
     >
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {props.title}
