@@ -1,7 +1,16 @@
+"use client";
+
 import React from "react";
+import { usePathname } from "next/navigation";
+
 // import styles from "./Footer.module.css"; // Utilisation de CSS Modules pour le style
 
 function Navbar() {
+  const pathname = usePathname();
+  if (pathname === "/admin/log-in") {
+    return null;
+  }
+
   return (
     <div className="flex justify-between items-center p-6 h-14 w-full bg-[#ffedd5] border-t-2 border-[#b77955]">
       <a href="/">Chaises</a>
@@ -13,5 +22,4 @@ function Navbar() {
     </div>
   );
 }
-
 export default Navbar;

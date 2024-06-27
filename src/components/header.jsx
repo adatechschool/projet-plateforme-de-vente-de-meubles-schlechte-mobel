@@ -12,7 +12,7 @@ const Header = () => {
    * => Conditional rendering: https://fr.legacy.reactjs.org/docs/conditional-rendering.html
    **/
   const afficheInput = () => {
-    if (pathname !== "/") {
+    if (pathname === "/" || pathname === "/admin/log-in") {
       return null;
     }
 
