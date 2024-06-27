@@ -3,14 +3,14 @@ import React from "react";
 
 function Navbar() {
   return (
-    <footer className="flex absolute justify-between items-center p-6 top-20 h-14 w-full">
+    <div className="flex justify-between items-center p-6 h-14 w-full bg-[#ffedd5] border-t-2 border-[#b77955]">
       <a href="/">Chaises</a>
       <a href="/">Fauteuils</a>
       <a href="/">Tables</a>
       <a href="/">Canapés</a>
       <a href="/">Armoires</a>
-      <a href="/">lampes</a>
-    </footer>
+      <a href="/">Lampes</a>
+    </div>
   );
 }
 

@@ -28,14 +28,20 @@ const Header = () => {
   };
 
   return (
-    <div className="flex items-center h-16 p-4 justify-between bg-indigo-300">
-      <h1 className="text-lg font-black">Schlecht Möbel</h1>
-      {afficheInput()}
-      <div className="flex items-center justify-center gap-3">
-        <User />
-        <ShoppingBasket />
+    <header className="sticky top-0 z-50 w-full flex items-center justify-center bg-[#ffedd8]">
+      <div className="w-full flex items-center justify-between p-4">
+        <h1 className="text-lg font-black">Schlecht Möbel</h1>
+        {afficheInput()}
+        <div className="flex items-center justify-center gap-3">
+          <a href="/user">
+            <User className="cursor-pointer" />
+          </a>
+          <a href="/cart">
+            <ShoppingBasket className="cursor-pointer" />
+          </a>
+        </div>
       </div>
-    </div>
+    </header>
   );
 };
 

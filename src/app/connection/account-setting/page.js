@@ -8,6 +8,14 @@ const PassWordInput = () => {
   return <input placeholder="Password:" />;
 };
 
+const ButtonNewConnection = () => {
+  return (
+    <button className="buttonNewConnection bg-[#050505] text-white text-lg rounded-md px-4 py-2 hover:bg-slate">
+      Me connecter
+    </button>
+  );
+};
+
 const Checkbox = () => {
   return (
     <label>
@@ -17,28 +25,22 @@ const Checkbox = () => {
   );
 };
 
-const ButtonNewConnection = () => {
-  return <button className="buttonNewConnection">Créer mon compte</button>;
-};
-
 const AccountSettingPage = () => {
   return (
-    <div>
-      <p>
-        Je suis nouveau client.e <br />
-        Créer mon compte
-      </p>
-      <ButtonNewConnection />
-      <p>
-        Je suis déjà client.e
-        <br />
-        Me connecter
-      </p>
-      <EmailInput />
-      <PassWordInput />
-      <Checkbox />
-      <header />
+    <div className="flex-1 min-h-full bg-cover bg-[url('/meublehome.jpg')] flex flex-col items-start justify-start w-full">
+      <div className="flex-1 min-h-full backdrop-blur-sm bg-white/30 w-full flex items-center justify-center">
+        <div className="backdrop-blur-sm bg-white/30 rounded-xl w-1/3 h-96 flex flex-col justify-center items-center gap-3">
+          <p>
+            <br />
+          </p>
+          <EmailInput />
+          <PassWordInput />
+          <ButtonNewConnection />
+          <Checkbox />
+        </div>
+      </div>
     </div>
   );
 };
+
 export default AccountSettingPage;

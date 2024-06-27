@@ -5,19 +5,31 @@ import { Facebook, Instagram, Linkedin, Mail, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
-    <div className="flex items-center h-16 p-4 justify-between bottom-0 absolute w-full bg-indigo-300">
-      <div className="flex items-center justify-center gap-3">
-        <Instagram />
-        <Twitter />
-        <Facebook />
-        <Linkedin />
+    <footer className="sticky bottom-0 z-50 w-full flex items-center justify-center bg-[#b77955]">
+      <div className="w-full flex items-center justify-between p-4">
+        <div className="flex items-center justify-center gap-3">
+          <a href="/instagram">
+            <Instagram className="cursor-pointer" />
+          </a>
+          <a href="/twitter">
+            <Twitter className="cursor-pointer" />
+          </a>
+          <a href="/facebook">
+            <Facebook className="cursor-pointer" />
+          </a>
+          <a href="/linkedin">
+            <Linkedin className="cursor-pointer" />
+          </a>
+        </div>
+        <div className="flex justify-center items-center gap-1">
+          <a href="/mail">
+            <Mail className="cursor-pointer" />
+          </a>
+          <a className="cursor-pointer">Nous contacter</a>
+        </div>
+        <a href="proprietaire">Propriétaire</a>
       </div>
-      <div className="flex items-center justify-center gap-2">
-        <Mail />
-        Nous contacter
-      </div>
-      <div>Propriétaire</div>
-    </div>
+    </footer>
   );
 };
 
