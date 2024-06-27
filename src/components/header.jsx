@@ -1,10 +1,11 @@
 "use client";
-
+import Link from "next/link";
 import { Search, ShoppingBasket, User } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Header = () => {
   const pathname = usePathname();
+  const router = useRouter();
 
   /**
    * Je n'affiche l'input que si mon url ne contient qu'un /
@@ -34,15 +35,25 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full flex items-center justify-center bg-[#ffedd8]">
       <div className="w-full flex items-center justify-between p-4">
-        <h1 className="text-lg font-black">Schlecht Möbel</h1>
+        <div
+          className="w-fit hover:cursor-pointer"
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+
+            router.push("/");
+          }}
+        >
+          <h1 className="text-lg font-black">Schlecht Möbel</h1>
+        </div>
         {afficheInput()}
         <div className="flex items-center justify-center gap-3">
           <a href="/user">
             <User className="cursor-pointer" />
           </a>
-          <a href="/cart">
+          <Link href="/connection/my-cart">
             <ShoppingBasket className="cursor-pointer" />
-          </a>
+          </Link>
         </div>
       </div>
     </header>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 import { Facebook, Instagram, Linkedin, Mail, Twitter } from "lucide-react";
 
@@ -27,7 +28,7 @@ const Footer = () => {
           </a>
           <a className="cursor-pointer">Nous contacter</a>
         </div>
-        <a href="proprietaire">Propriétaire</a>
+        <Link href="/admin/log-in">Propriétaire</Link>
       </div>
     </footer>
   );
