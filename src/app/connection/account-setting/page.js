@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import Input from "@/components/input";
 
@@ -21,9 +22,12 @@ const PassWordInput = () => {
 
 const ButtonNewConnection = () => {
   return (
-    <button className="buttonNewConnection bg-[#050505] text-white text-lg rounded-md px-4 py-2 hover:bg-slate">
+    <Link
+      href="/"
+      className="buttonNewConnection bg-[#050505] text-white text-lg rounded-md px-4 py-2 hover:bg-slate"
+    >
       Me connecter
-    </button>
+    </Link>
   );
 };
 
@@ -32,6 +36,16 @@ const Checkbox = () => {
     <div className="flex justify-center items-center gap-4">
       <input type="checkbox" />
       <label>Se souvenir de moi</label>
+    </div>
+  );
+};
+
+const NewAccount = () => {
+  return (
+    <div className="flex justify-center items-center gap-4 text-sm hover:underline hover:cursor-pointer">
+      <Link href="/connection/signup">
+        <p>Je n'ai pas de compte</p>
+      </Link>
     </div>
   );
 };
@@ -50,6 +64,7 @@ const AccountSettingPage = () => {
           <div className="my-3" />
           <ButtonNewConnection />
           <Checkbox />
+          <NewAccount />
         </div>
       </div>
     </div>

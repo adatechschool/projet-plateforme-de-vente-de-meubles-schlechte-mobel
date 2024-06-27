@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 import { MyCard } from "../../../components/mycard";
 
@@ -20,9 +21,12 @@ const CataloguePage = () => {
           <div className="grid grid-cols-3 gap-6 p-6">
             {data.map((d) => (
               <div className="flex justify-center items-center" key={d.title}>
-                <div className="w-4/5">
+                <Link
+                  href="/furniture/item"
+                  className="w-4/5 hover:cursor-pointer"
+                >
                   <MyCard title={d.title} description={d.description} />
-                </div>
+                </Link>
               </div>
             ))}
           </div>

@@ -48,9 +48,9 @@ const Header = () => {
         </div>
         {afficheInput()}
         <div className="flex items-center justify-center gap-3">
-          <a href="/user">
+          <Link href="/connection/account-setting">
             <User className="cursor-pointer" />
-          </a>
+          </Link>
           <Link href="/connection/my-cart">
             <ShoppingBasket className="cursor-pointer" />
           </Link>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Input from "@/components/input";
 import React from "react";
 
@@ -38,11 +39,11 @@ const MyAccount = () => {
           </div>
         </div>
       </div>
-      <div className="mt-6">
+      <Link href="/" className="mt-6">
         <button className="bg-black text-white text-sm rounded-md px-4 py-2 hover:bg-slate">
           Valider
         </button>
-      </div>
+      </Link>
     </div>
   );
 };
