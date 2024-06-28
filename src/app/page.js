@@ -90,6 +90,11 @@ export default function Home() {
           </p>
         </a>
       </div>
+
+      <form action="/redirection" name="" method="POST" onSubmit={(event) => {
+        const formdata = new FormData()
+      }}>
+      </form>
     </main>
   );
 }
