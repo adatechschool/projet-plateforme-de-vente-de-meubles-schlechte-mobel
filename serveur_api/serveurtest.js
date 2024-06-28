@@ -1,3 +1,4 @@
+const { getFurnituresByCategory } = require("./queries.js")
 const express = require('express')
 const app = express()
 
@@ -25,6 +26,19 @@ app.get("/persons", (request, response) => {
                 height: "176"
             }]
     })
+})
+
+// ==== essai de sitribution de Json
+app.get("/category", async (request, response) => {
+
+    try {
+        const data = await getFurnituresByCategory(2);
+
+        response.json(data);
+        response.end();
+    } catch (error) {
+
+    }
 })
 
 // ==== Ecoute la request POST sur la route /userRegistration
