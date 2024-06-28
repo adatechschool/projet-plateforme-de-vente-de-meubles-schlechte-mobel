@@ -62,12 +62,12 @@ La liste complète de tous les champs de données obligatoires pour la DB par Ta
 
 ***Data dynamique***
 
-- *users*
+- **users**
   - name
   - surname
   - email
   - password
-- *furnitures*
+- **furnitures**
   - category : FK category_id
   - material : FK material_id
   - condition : FK condition_id
@@ -77,15 +77,18 @@ La liste complète de tous les champs de données obligatoires pour la DB par Ta
 
 ***Data figée***
 
-- *categories*
+- **categories**
   - name
-- *conditions*
+- **conditions**
   - name
-- *materials*
+- **materials**
   - name
-- *roles*
+- **roles**
   - name
 
 ## Functionnal queries
 
 Filepath: [queries.js](./queries.js)
+
+**getFurnituresByCategory(categoryId, maxNumberResponse = 10)**  
+Fait la requête au server, return un array d'objets Meuble avec comme catégorie l'id fournie
