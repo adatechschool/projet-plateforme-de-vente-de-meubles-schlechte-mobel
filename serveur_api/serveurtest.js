@@ -35,6 +35,7 @@ app.get("/persons", (request, response) => {
 app.get("/getbygategory", async (request, response) => {
 
     try {
+        //take key value of the request body (issued from a form)
         const categoryId = request.body.categoryId;
         const data = await getFurnituresByCategory(categoryId);
 
