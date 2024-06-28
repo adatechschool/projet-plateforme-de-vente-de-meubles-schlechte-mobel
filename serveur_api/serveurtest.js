@@ -1,10 +1,16 @@
-const { getFurnituresByCategory } = require("./queries.js")
+const {
+    getFurnituresByCategory,
+    getFurnitureById } = require("./queries.js");
+
 const express = require('express')
 const app = express()
 
+// Necessity tu use a middleware to retrieved infos from a POST form
 app.use(express.urlencoded({ extended: true }))
 // app.use(express.json())
 
+// ============== EXAMPLES ======================
+// Go to localhost:9090/doc
 app.get("/doc",
     function (requete, reponse) {
         reponse.send("si /persons alors json")
@@ -14,8 +20,8 @@ app.get("/doc",
 // ==== Ecoute la request GET sur la route /persons
 app.get("/persons", (request, response) => {
 
-    response.json({
-        result: [
+    response.json(
+        [
             {
                 name: "Jack",
                 height: "180"
@@ -27,11 +33,13 @@ app.get("/persons", (request, response) => {
             {
                 name: "Jane",
                 height: "176"
-            }]
-    })
+            }
+        ]
+    )
 })
+// ============= END EXAMPLES ==================
 
-// ==== essai distribution de Json
+// ==== Sends furnitures (limited by 10) with a specified category
 app.get("/getbycategory", async (request, response) => {
 
     try {
@@ -41,8 +49,27 @@ app.get("/getbycategory", async (request, response) => {
 
         response.json(data);
         response.end();
-    } catch (error) {
 
+    } catch (error) {
+        console.log("Error routing GET /getbycategory", error);
+        response.sendStatus(400);
+        response.end();
+    }
+})
+
+// ==== Sends solo json for a specified id
+app.get("/getitem", async (request, response) => {
+    try {
+        const itemId = request.body.itemId;
+        const data = await getFurnitureById(itemId);
+
+        response.json(data);
+        response.end();
+
+    } catch (error) {
+        console.log("Error routing GET /getitem", error);
+        response.sendStatus(400);
+        response.end();
     }
 })
 
