@@ -32,7 +32,7 @@ app.get("/persons", (request, response) => {
 })
 
 // ==== essai distribution de Json
-app.get("/getbygategory", async (request, response) => {
+app.get("/getbycategory", async (request, response) => {
 
     try {
         //take key value of the request body (issued from a form)
