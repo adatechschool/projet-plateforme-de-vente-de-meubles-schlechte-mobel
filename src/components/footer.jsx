@@ -26,7 +26,7 @@ const Footer = () => {
           <a href="/mail">
             <Mail className="cursor-pointer" />
           </a>
-          <a className="cursor-pointer">Nous contacter</a>
+          <a href="mailto:schechtlmobel@gmail.com">Nous contacter</a>
         </div>
         <Link href="/admin/log-in">Propriétaire</Link>
       </div>
