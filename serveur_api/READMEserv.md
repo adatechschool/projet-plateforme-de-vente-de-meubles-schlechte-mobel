@@ -85,3 +85,7 @@ La liste complète de tous les champs de données obligatoires pour la DB par Ta
   - name
 - *roles*
   - name
+
+## Functionnal queries
+
+Filepath: [queries.js](./queries.js)

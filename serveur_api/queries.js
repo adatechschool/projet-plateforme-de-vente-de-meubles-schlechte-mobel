@@ -1,0 +1,44 @@
+require("dotenv").config();
+const pg = require("pg");
+const { Pool, Client } = pg;
+
+const connectionString = process.env.DATABASE_URL;
+const pool = new Pool({
+    connectionString
+});
+
+// ===========================================
+
+
+async function getFurnituresByCategory(categoryId, maxNumberResponse = 10) {
+
+    const client = await pool.connect();
+
+    const queryText = 'SELECT furniture_id, categories.name AS category, materials.name AS material, conditions.name AS condition, colors.name AS color_main, secondary.name AS color_secondary, dimensions, price, description, image FROM furnitures LEFT JOIN categories ON category_id = $1 LEFT JOIN colors ON color_id = furnitures.color_main LEFT JOIN colors AS secondary ON secondary.color_id = furnitures.color_secondary LEFT JOIN conditions ON condition_id = furnitures.condition LEFT JOIN materials ON material_id = furnitures.material ORDER BY furniture_id LIMIT $2;';
+    const params = [categoryId, maxNumberResponse];
+
+    const response = await client.query(queryText, params);
+    console.log(response.rows);
+
+    return response.rows;
+
+    // Release the Client we took from Pool
+    client.release();
+}
+// === Testing
+// getFurnituresByCategory(2);
+// return:
+// [
+//     {
+//       furniture_id: 1,
+//       category: 'Fauteuil',
+//       material: 'Bois',
+//       condition: 'Comme neuf',
+//       color_main: 'Rouge',
+//       color_secondary: 'Orange',
+//       dimensions: '80x60x100',
+//       price: 1200,
+//       description: 'Fauteuil de ma Grand-Mère',
+//       image: 'https://images.unsplash.com/photo-1601366533287-5ee4c763ae4e'
+//     }
+//   ]
