@@ -7,7 +7,8 @@ const app = express()
 
 // Necessity tu use a middleware to retrieved infos from a POST form
 app.use(express.urlencoded({ extended: true }))
-// app.use(express.json())
+const { router } = require("./documentation.js");
+app.use(router)
 
 // ============== EXAMPLES ======================
 // Go to localhost:9090/doc
