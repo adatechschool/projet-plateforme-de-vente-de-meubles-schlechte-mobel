@@ -2,6 +2,9 @@ const { getFurnituresByCategory } = require("./queries.js")
 const express = require('express')
 const app = express()
 
+app.use(express.urlencoded({ extended: true }))
+// app.use(express.json())
+
 app.get("/doc",
     function (requete, reponse) {
         reponse.send("si /persons alors json")
@@ -28,11 +31,12 @@ app.get("/persons", (request, response) => {
     })
 })
 
-// ==== essai de sitribution de Json
-app.get("/category", async (request, response) => {
+// ==== essai distribution de Json
+app.get("/getbygategory", async (request, response) => {
 
     try {
-        const data = await getFurnituresByCategory(2);
+        const categoryId = request.body.categoryId;
+        const data = await getFurnituresByCategory(categoryId);
 
         response.json(data);
         response.end();
@@ -44,6 +48,8 @@ app.get("/category", async (request, response) => {
 // ==== Ecoute la request POST sur la route /userRegistration
 app.post("/userregistration", (request, response) => {
     // fait les request pour remplir la DB et renvoi OK*
+    console.log(request.body);
+
     response.sendStatus(200);
     response.end();
 })
