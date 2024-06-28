@@ -1,11 +1,11 @@
 //import { Input } from "postcss";
-import Input from "@/components/input";
+// import Input from "@/components/input";
 
-const AdminLogin = () => {
-  return (
-    <div className="flex-1 min-h-full bg-cover bg-[url('/admin.jpg')]"></div>
-  );
-};
+// const AdminLogin = () => {
+//   return (
+//     <div className="flex-1 min-h-full bg-cover bg-[url('/admin.jpg')]"></div>
+//   );
+// };
 
 const ButtonValidation = () => {
   return (

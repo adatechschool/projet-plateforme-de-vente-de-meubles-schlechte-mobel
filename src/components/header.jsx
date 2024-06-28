@@ -14,9 +14,11 @@ const Header = () => {
    **/
   const afficheInput = () => {
     if (
-      pathname === "/" ||
       pathname === "/admin/log-in" ||
-      pathname === "/admin/sale-validation"
+      pathname === "/admin/sale-validation" ||
+      pathname === "/admin/redirection" ||
+      pathname === "/admin/redirection/sales" ||
+      pathname === "/admin/redirection/stock"
     ) {
       return null;
     }

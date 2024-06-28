@@ -8,7 +8,13 @@ import { usePathname } from "next/navigation";
 
 function Navbar() {
   const pathname = usePathname();
-  if (pathname === "/admin/log-in" || pathname === "/admin/sale-validation") {
+  if (
+    pathname === "/admin/log-in" ||
+    pathname === "/admin/sale-validation" ||
+    pathname === "/admin/redirection" ||
+    pathname === "/admin/redirection/sales" ||
+    pathname === "/admin/redirection/stock"
+  ) {
     return null;
   }
 

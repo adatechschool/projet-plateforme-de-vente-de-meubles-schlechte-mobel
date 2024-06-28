@@ -22,12 +22,15 @@ const Footer = () => {
             <Linkedin className="cursor-pointer" />
           </a>
         </div>
+
         <div className="flex justify-center items-center gap-1">
-          <a href="/mail">
+          <a href="mailto:schechtlmobel@gmail.com">
             <Mail className="cursor-pointer" />
           </a>
+
           <a href="mailto:schechtlmobel@gmail.com">Nous contacter</a>
         </div>
+
         <Link href="/admin/log-in">Propriétaire</Link>
       </div>
     </footer>
