@@ -8,6 +8,10 @@ const Title = () => {
   );
 };
 
+const Text = () => {
+  return <p className="text-sm">Description du meuble</p>;
+};
+
 const ButtonValidation = () => {
   return (
     <button className="bg-[#050505] text-white text-sm rounded-md px-3 py-1 mb-2">
@@ -34,6 +38,7 @@ const Card = ({ title, image }) => {
           alt={title}
           className="w-40 h-40 object-cover rounded-md"
         />
+        <Text />
         <div className="flex flex-col justify-center">
           <ButtonValidation />
           <ButtonDenied />
