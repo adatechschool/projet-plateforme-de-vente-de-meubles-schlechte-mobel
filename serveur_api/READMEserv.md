@@ -1,4 +1,4 @@
-## express framework minimalist de NODE.js
+# express framework minimalist de NODE.js
 
 ## => Simplifier le routage et les réponses du server
 
@@ -60,6 +60,8 @@ app.listen(9090, function() {
 FK = Foreign Key
 La liste complète de tous les champs de données obligatoires pour la DB par Table:
 
+***Data dynamique***
+
 - *users*
   - name
   - surname
@@ -72,6 +74,9 @@ La liste complète de tous les champs de données obligatoires pour la DB par Ta
   - color_main : FK color_id
   - dimensions
   - price
+
+***Data figée***
+
 - *categories*
   - name
 - *conditions*
