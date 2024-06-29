@@ -1,0 +1,63 @@
+const express = require('express')
+const app = express()
+const router = express.Router();
+
+const {
+    getFurnituresByCategory,
+    getFurnitureById,
+    getAllFurniture } = require("./queries.js");
+
+
+module.exports = { router }
+
+// ==== Sends all furnitures, limited by 10 default
+router.all("/furnitures", async (req, res) => {
+
+    try {
+        const limit = req.query.limit
+
+        const data = await getAllFurniture(limit)
+
+        res.json(data);
+        res.end();
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(400);
+        res.end();
+    }
+})
+
+// ==== Sends a specifid category
+router.route("/furnitures/category")
+    .get(async (request, response) => {
+        try {
+            const categoryId = request.query.id;
+            const limit = request.query.limit;
+            const data = await getFurnituresByCategory(categoryId, limit)
+
+            response.json(data);
+            response.end();
+
+        } catch (error) {
+            console.log("Error routing GET /furnitures/category", error);
+            response.sendStatus(400);
+            response.end();
+        }
+    })
+
+// ==== Sends a specific item
+router.route("/furnitures/item")
+    .get(async (request, response) => {
+        try {
+            const itemId = request.query.id;
+            const data = await getFurnitureById(itemId);
+
+            response.json(data);
+            response.end();
+
+        } catch (error) {
+            console.log("Error routing GET /furnitures/item", error);
+            response.sendStatus(400);
+            response.end();
+        }
+    })
