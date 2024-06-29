@@ -92,3 +92,6 @@ Filepath: [queries.js](./queries.js)
 
 **getFurnituresByCategory(categoryId, maxNumberResponse = 10)**  
 Fait la requête au server, return un array d'objets Meuble avec comme catégorie l'id fournie
+
+**getFurnitureById(id)**
+Requête pour chopper 1 seul meuble

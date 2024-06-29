@@ -9,7 +9,7 @@ const pool = new Pool({
 
 // ===========================================
 
-module.exports = { getFurnituresByCategory, getFurnitureById }
+module.exports = { getFurnituresByCategory, getFurnitureById, getAllFurniture }
 
 async function getFurnituresByCategory(categoryId, maxNumberResponse = 10) {
 
@@ -51,11 +51,11 @@ async function getFurnituresByCategory(categoryId, maxNumberResponse = 10) {
 //     {...}
 //   ]
 
-async function getFurnitureById(id, maxNumberResponse = 10) {
+async function getFurnitureById(id) {
     const client = await pool.connect();
 
-    const queryText = 'SELECT furniture_id as id, categories.name as category, materials.name as material, conditions.name as condition, colors.name as color_main, secondary.name as color_secondary, dimensions, price, description, image from furnitures left JOIN categories on category_id = furnitures.category left join colors on color_id = furnitures.color_main left join colors as secondary on secondary.color_id = furnitures.color_secondary left join conditions on condition_id = furnitures.condition left join materials on material_id = furnitures.material Where furnitures.furniture_id = $1 order by id limit $2;';
-    const params = [id, maxNumberResponse];
+    const queryText = 'SELECT furniture_id as id, categories.name as category, materials.name as material, conditions.name as condition, colors.name as color_main, secondary.name as color_secondary, dimensions, price, description, image from furnitures left JOIN categories on category_id = furnitures.category left join colors on color_id = furnitures.color_main left join colors as secondary on secondary.color_id = furnitures.color_secondary left join conditions on condition_id = furnitures.condition left join materials on material_id = furnitures.material Where furnitures.furniture_id = $1 order by id;';
+    const params = [id];
 
     try {
         const response = await client.query(queryText, params);
@@ -64,9 +64,31 @@ async function getFurnitureById(id, maxNumberResponse = 10) {
         return response.rows;
 
     } catch (error) {
-        console.log("Error getting furnitures by category", error);
+        console.log("Error getting furnitures by id", error);
     }
     // Release the Client we took from Pool
     client.release();
 }
 // getFurnitureById(2)
+
+async function getAllFurniture(maxNumberResponse = 10) {
+
+    const client = await pool.connect();
+
+    const queryText = 'SELECT furniture_id AS id, categories.name AS category, materials.name AS material, conditions.name AS condition, colors.name AS color_main, secondary.name AS color_secondary, dimensions, price, description, image FROM furnitures LEFT JOIN categories ON category_id = furnitures.category LEFT JOIN colors ON color_id = furnitures.color_main LEFT JOIN colors AS secondary ON secondary.color_id = furnitures.color_secondary LEFT JOIN conditions ON condition_id = furnitures.condition LEFT JOIN materials ON material_id = furnitures.material WHERE furnitures.furniture_id <= $1 ORDER BY id;';
+    const params = [maxNumberResponse];
+
+    try {
+        const response = await client.query(queryText, params);
+        // console.log(response.rows);
+
+        return response.rows;
+
+    } catch (error) {
+
+        console.log("Error getting all furnitures", error);
+    }
+
+    // Release the Client we took from Pool
+    client.release();
+}

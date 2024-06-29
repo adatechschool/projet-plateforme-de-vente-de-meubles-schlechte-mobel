@@ -1,25 +1,40 @@
+const express = require('express');
+const app = express();
+
 const {
     getFurnituresByCategory,
     getFurnitureById } = require("./queries.js");
 
-const express = require('express')
-const app = express()
+
+require("dotenv").config();
+const pg = require("pg");
+const { Pool, Client } = pg;
+
+const connectionString = process.env.DATABASE_URL;
+const pool = new Pool({
+    connectionString
+});
+
 
 // Necessity tu use a middleware to retrieved infos from a POST form
 app.use(express.urlencoded({ extended: true }))
-const { router } = require("./documentation.js");
-app.use(router)
+
+// importing the router at root for documentation
+const { documentationRoute } = require("./documentation.js");
+const { router } = require("./router.js");
+app.use(documentationRoute);
+app.use(router);
 
 // ============== EXAMPLES ======================
 // Go to localhost:9090/doc
-app.get("/doc",
+app.get("/example",
     function (requete, reponse) {
-        reponse.send("si /persons alors json")
+        reponse.send("si /example/persons alors json")
     }
 )
 
 // ==== Ecoute la request GET sur la route /persons
-app.get("/persons", (request, response) => {
+app.get("/example/persons", (request, response) => {
 
     response.json(
         [
@@ -44,8 +59,9 @@ app.get("/persons", (request, response) => {
 app.get("/getbycategory", async (request, response) => {
 
     try {
+
         //take key value of the request body (issued from a form)
-        const categoryId = request.body.categoryId;
+        const categoryId = request.query.id;
         const data = await getFurnituresByCategory(categoryId);
 
         response.json(data);
@@ -61,7 +77,7 @@ app.get("/getbycategory", async (request, response) => {
 // ==== Sends solo json for a specified id
 app.get("/getitem", async (request, response) => {
     try {
-        const itemId = request.body.itemId;
+        const itemId = request.query.id;
         const data = await getFurnitureById(itemId);
 
         response.json(data);
