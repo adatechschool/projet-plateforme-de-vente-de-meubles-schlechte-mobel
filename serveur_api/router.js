@@ -5,7 +5,8 @@ const router = express.Router();
 const {
     getFurnituresByCategory,
     getFurnitureById,
-    getAllFurniture } = require("./queries.js");
+    getAllFurniture,
+    getFurnituresByColor } = require("./queries.js");
 
 
 module.exports = { router }
@@ -57,6 +58,24 @@ router.route("/furnitures/item")
 
         } catch (error) {
             console.log("Error routing GET /furnitures/item", error);
+            response.sendStatus(400);
+            response.end();
+        }
+    })
+
+// ==== Color filter
+router.route("/furnitures/color")
+    .get(async (request, response) => {
+        try {
+            const itemId = request.query.id;
+            const limit = request.query.limit;
+            const data = await getFurnituresByColor(itemId, limit);
+
+            response.json(data);
+            response.end();
+
+        } catch (error) {
+            console.log("Error routing GET /furnitures/color", error);
             response.sendStatus(400);
             response.end();
         }
