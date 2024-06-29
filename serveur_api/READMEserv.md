@@ -88,10 +88,17 @@ La liste complète de tous les champs de données obligatoires pour la DB par Ta
 
 ## Functionnal queries
 
-Filepath: [queries.js](./queries.js)
+Filepath: [queries.js](./queries.js);
+More docs: [Docs](http://localhost:9090)
 
 **getFurnituresByCategory(categoryId, maxNumberResponse = 10)**  
 Fait la requête au server, return un array d'objets Meuble avec comme catégorie l'id fournie
 
 **getFurnitureById(id)**
 Requête pour chopper 1 seul meuble
+
+**getAllFurnitures(startingId, maxNumberResponse = 10)**
+Requête DB pour récupérer tous les meubles, *limit* en query params
+
+**getFurnituresByColor(colorId, maxNumberResponse = 10)**
+Cherche la colorId dans les couleurs principales ou secondaires, *limit* en query params

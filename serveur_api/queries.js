@@ -12,7 +12,7 @@ const pool = new Pool({
 module.exports = {
     getFurnituresByCategory,
     getFurnitureById,
-    getAllFurniture,
+    getAllFurnitures,
     getFurnituresByColor
 }
 
@@ -76,12 +76,12 @@ async function getFurnitureById(id) {
 }
 // getFurnitureById(2)
 
-async function getAllFurniture(maxNumberResponse = 10) {
+async function getAllFurnitures(startingId = 1, maxNumberResponse = 10) {
 
     const client = await pool.connect();
 
-    const queryText = 'SELECT furniture_id AS id, categories.name AS category, materials.name AS material, conditions.name AS condition, colors.name AS color_main, secondary.name AS color_secondary, dimensions, price, description, image FROM furnitures LEFT JOIN categories ON category_id = furnitures.category LEFT JOIN colors ON color_id = furnitures.color_main LEFT JOIN colors AS secondary ON secondary.color_id = furnitures.color_secondary LEFT JOIN conditions ON condition_id = furnitures.condition LEFT JOIN materials ON material_id = furnitures.material WHERE furnitures.furniture_id <= $1 ORDER BY id;';
-    const params = [maxNumberResponse];
+    const queryText = 'SELECT furniture_id AS id, categories.name AS category, materials.name AS material, conditions.name AS condition, colors.name AS color_main, secondary.name AS color_secondary, dimensions, price, description, image FROM furnitures LEFT JOIN categories ON category_id = furnitures.category LEFT JOIN colors ON color_id = furnitures.color_main LEFT JOIN colors AS secondary ON secondary.color_id = furnitures.color_secondary LEFT JOIN conditions ON condition_id = furnitures.condition LEFT JOIN materials ON material_id = furnitures.material WHERE furnitures.furniture_id >= $1 ORDER BY id LIMIT $2;';
+    const params = [startingId, maxNumberResponse];
 
     try {
         const response = await client.query(queryText, params);

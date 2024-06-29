@@ -19,9 +19,9 @@ documentationRoute.all("/", (req, res) => {
     res.json(
         [
             {
-                info: "Retrieve all furnitures with a limit, if no query limit defaults to 10",
+                info: "Retrieve all furnitures starting at 'id' with a limit, if no query limit defaults to 10",
                 at: "/furnitures",
-                queryKeywords: ["limit"],
+                queryKeywords: ["id", "limit"],
                 example: "/furnitures?limit=2"
             },
             {
@@ -35,6 +35,12 @@ documentationRoute.all("/", (req, res) => {
                 at: "/furnitures/item",
                 queryKeywords: ["id"],
                 example: "/furnitures/item?id=1"
+            },
+            {
+                info: "Retrieve all furnitures by color id with a limit",
+                at: "/furnitures/color",
+                queryKeywords: ["id", "limit"],
+                example: "/furnitures/color?id=2"
             },
         ]
     )

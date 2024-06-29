@@ -5,7 +5,7 @@ const router = express.Router();
 const {
     getFurnituresByCategory,
     getFurnitureById,
-    getAllFurniture,
+    getAllFurnitures,
     getFurnituresByColor } = require("./queries.js");
 
 
@@ -16,8 +16,9 @@ router.all("/furnitures", async (req, res) => {
 
     try {
         const limit = req.query.limit
+        const startingId = req.query.id
 
-        const data = await getAllFurniture(limit)
+        const data = await getAllFurnitures(startingId, limit)
 
         res.json(data);
         res.end();
