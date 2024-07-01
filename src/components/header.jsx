@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { Search, ShoppingBasket, User } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+import { LocalStorage, localstorageKey } from "@/utils/localstorage";
 
 const Header = () => {
   const pathname = usePathname();
@@ -34,6 +35,21 @@ const Header = () => {
     );
   };
 
+  function goToLoginOrMyAccount() {
+    /**
+     * Si on est connecté => on va sur my account
+     * Sinon, on va sur log-in
+     */
+
+    //On vérifie le localstorage pour savoir si je suis connectée.
+    const isConnected = LocalStorage.getItem(localstorageKey.isLogin);
+    if (isConnected === true) {
+      return "/connection/my-account";
+    } else {
+      return "/connection/log-in";
+    }
+  }
+
   return (
     <header className="sticky top-0 z-50 w-full flex items-center justify-center bg-[#ffedd8]">
       <div className="w-full flex items-center justify-between p-4">
@@ -50,7 +66,7 @@ const Header = () => {
         </div>
         {afficheInput()}
         <div className="flex items-center justify-center gap-3">
-          <Link href="/connection/log-in">
+          <Link href={goToLoginOrMyAccount()}>
             <User className="cursor-pointer" />
           </Link>
           <Link href="/connection/my-cart">

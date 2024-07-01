@@ -8,8 +8,8 @@ const Title = () => {
   );
 };
 
-const Text = () => {
-  return <p className="text-sm">Description du meuble</p>;
+const Text = (props) => {
+  return <p className="text-sm">{props.description}</p>;
 };
 
 const ButtonValidation = () => {
@@ -28,7 +28,7 @@ const ButtonDenied = () => {
   );
 };
 
-const Card = ({ title, image }) => {
+const Card = ({ title, image, description }) => {
   return (
     <div className="backdrop-blur-sm bg-white/10 rounded-xl w-2/3 flex flex-col justify-center items-center my-4 p-2 shadow-md">
       <p className="text-md font-bold">{title}</p>
@@ -38,11 +38,8 @@ const Card = ({ title, image }) => {
           alt={title}
           className="w-40 h-40 object-cover rounded-md"
         />
-        <Text />
-        <div className="flex flex-col justify-center">
-          <ButtonValidation />
-          <ButtonDenied />
-        </div>
+        <Text description={description} />
+        <div className="flex flex-col justify-center"></div>
       </div>
     </div>
   );
@@ -50,10 +47,50 @@ const Card = ({ title, image }) => {
 
 const AdminRedirection = () => {
   const cardsData = [
-    { id: 1, title: "Annonce 1", image: "https://placehold.co/600x400" },
-    { id: 2, title: "Annonce 2", image: "https://placehold.co/600x400" },
-    { id: 3, title: "Annonce 3", image: "https://placehold.co/600x400" },
-    { id: 3, title: "Annonce 4", image: "https://placehold.co/600x400" },
+    {
+      id: 1,
+      title: "Annonce 1",
+      image:
+        "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "ma description 1",
+    },
+    {
+      id: 2,
+      title: "Annonce 2",
+      image:
+        "https://plus.unsplash.com/premium_photo-1681980019667-96baeb36fc33?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "ma description 2",
+    },
+    {
+      id: 3,
+      title: "Annonce 3",
+      image:
+        "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "ma description 3",
+    },
+    {
+      id: 4,
+      title: "Annonce 4",
+      image:
+        "https://images.unsplash.com/photo-1565791380713-1756b9a05343?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "ma description 4",
+    },
+
+    {
+      id: 5,
+      title: "Annonce 5",
+      image:
+        "https://images.unsplash.com/photo-1690310588492-fc8f92bff323?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "ma description 5",
+    },
+
+    {
+      id: 6,
+      title: "Annonce 6",
+      image:
+        "https://images.unsplash.com/photo-1634148737510-727f137375e0?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "ma description 5",
+    },
   ];
 
   return (
@@ -63,7 +100,12 @@ const AdminRedirection = () => {
       </div>
       <div className="w-full flex flex-col items-center">
         {cardsData.map((card) => (
-          <Card key={card.id} title={card.title} image={card.image} />
+          <Card
+            key={card.id}
+            title={card.title}
+            image={card.image}
+            description={card.description}
+          />
         ))}
       </div>
     </div>
