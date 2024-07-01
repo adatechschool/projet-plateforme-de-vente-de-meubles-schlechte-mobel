@@ -50,7 +50,7 @@ const Header = () => {
         </div>
         {afficheInput()}
         <div className="flex items-center justify-center gap-3">
-          <Link href="/connection/account-setting">
+          <Link href="/connection/log-in">
             <User className="cursor-pointer" />
           </Link>
           <Link href="/connection/my-cart">
