@@ -9,5 +9,10 @@
     "condition": "Comme neuf",
     "price": "1245",
     "image": "Format encore inconnu comme réponse, sorry Y_Y, je pense que c'est une url",
-    "description": "Blah blah, c'est un super meuble que je vends!"
+    "description": "Blah blah, c'est un super meuble que je vends!",
+    "state": [
+        "standby",
+        "validated",
+        "deleted"
+    ]
 }

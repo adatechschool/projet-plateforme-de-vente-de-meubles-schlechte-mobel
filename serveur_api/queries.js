@@ -13,7 +13,9 @@ module.exports = {
     getFurnituresByCategory,
     getFurnitureById,
     getAllFurnitures,
-    getFurnituresByColor
+    getFurnituresByColor,
+    getFurnituresByCondition,
+    getFurnituresByPrice
 }
 
 async function getFurnituresByCategory(categoryId, maxNumberResponse = 10) {
@@ -114,3 +116,41 @@ async function getFurnituresByColor(colorId, maxNumberResponse = 10) {
     // Release the Client we took from Pool
     client.release();
 }
+
+async function getFurnituresByCondition(conditionId, maxNumberResponse = 10) {
+    const client = await pool.connect();
+
+    const queryText = 'SELECT furniture_id as id, categories.name as category, materials.name as material, conditions.name as condition, colors.name as color_main, secondary.name as color_secondary, dimensions, price, description, image from furnitures left JOIN categories on category_id = furnitures.category left join colors on color_id = furnitures.color_main left join colors as secondary on secondary.color_id = furnitures.color_secondary left join conditions on condition_id = furnitures.condition left join materials on material_id = furnitures.material Where furnitures.condition = $1 order by furniture_id limit $2;'
+    const params = [conditionId, maxNumberResponse];
+
+    try {
+        const response = await client.query(queryText, params);
+        console.log(response.rows);
+
+        return response.rows;
+
+    } catch (error) {
+        console.log("Error getting furnitures by Condition", error);
+    }
+    client.release();
+}
+// getFurnituresByCondition(4);
+
+async function getFurnituresByPrice(minPrice = 1, maxPrice = 5000, maxNumberResponse = 10) {
+    const client = await pool.connect();
+
+    const queryText = 'SELECT furniture_id as id, categories.name as category, materials.name as material, conditions.name as condition, colors.name as color_main, secondary.name as color_secondary, dimensions, price, description, image from furnitures left JOIN categories on category_id = furnitures.category left join colors on color_id = furnitures.color_main left join colors as secondary on secondary.color_id = furnitures.color_secondary left join conditions on condition_id = furnitures.condition left join materials on material_id = furnitures.material Where furnitures.price > $1 AND furnitures.price < $2 order by furniture_id limit $3;'
+    const params = [parseInt(minPrice), parseInt(maxPrice), maxNumberResponse];
+
+    try {
+        const response = await client.query(queryText, params);
+        // console.log(response.rows);
+
+        return response.rows;
+
+    } catch (error) {
+        console.log("Error getting furnitures by Price", error);
+    }
+    client.release();
+}
+// getFurnituresByPrice(750, 1000);
