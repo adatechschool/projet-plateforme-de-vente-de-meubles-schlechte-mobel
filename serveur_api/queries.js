@@ -154,3 +154,26 @@ async function getFurnituresByPrice(minPrice = 1, maxPrice = 5000, maxNumberResp
     client.release();
 }
 // getFurnituresByPrice(750, 1000);
+
+/// ===== TEMPORAIRE
+async function checkMailDb(email) {
+    try {
+        const client = await pool.connect();
+
+        const double = 'SELECT id, name from test where test.name = $1'
+        const params = [email]
+
+        const result = await client.query(
+            double, params
+        );
+        console.log(result.rows)
+
+        if (result.rows.length >= 1) {
+            console.log("doublon")
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+checkMailDb('Jack')
