@@ -1,11 +1,13 @@
 
 const express = require('express');
 const app = express();
-const {addUserToDatabase}=require('./index.js') 
+
+const { addUserToDatabase } = require('./functions.js')
 
 const {
     getFurnituresByCategory,
     getFurnitureById } = require("./queries.js");
+
 
 require("dotenv").config();
 const pg = require("pg");
@@ -16,7 +18,8 @@ const pool = new Pool({
     connectionString
 });
 
-// Necessity to use a middleware to retrieved infos from a POST form
+
+// Necessity tu use a middleware to retrieved infos from a POST form
 app.use(express.urlencoded({ extended: true }))
 
 // importing the router at root for documentation
@@ -98,16 +101,16 @@ app.post("/userregistration", (request, response) => {
     response.sendStatus(200);
     response.end();
 })
-app.post("/newuser", async(request, response)=> {
+app.post("/newuser", async (request, response) => {
 
     try {
         const name = request.body.name
         const surname = request.body.surname
         const email = request.body.email
-        const password = request.body.password 
-    console.log(request.body)
-  
-        const ok=await addUserToDatabase(name, surname, email, password)
+        const password = request.body.password
+        console.log(request.body)
+
+        const ok = await addUserToDatabase(name, surname, email, password)
 
         if (ok) {
             response.sendStatus(200);
@@ -117,12 +120,13 @@ app.post("/newuser", async(request, response)=> {
             response.sendStatus(403);
             response.end();
         }
-       
+
     } catch (error) {
-        console.log("Error routing POST /newentry", error)
+        console.log('error')
     }
 
-      });
+});
+
 
 
 //app.post()
@@ -130,18 +134,4 @@ app.post("/newuser", async(request, response)=> {
 app.listen(9090, function () {
     console.log('Mon serveur écoute sur le port 9090')
 
-})
-
-app.post("/newfurniture", async (request, response) => {
-
-    try {
-        const new_user_furniture = request.body.id
-        const new_furniture = request.body.id
-        console.log(request.body)
-
-        response.sendStatus(200);
-        response.end();
-    } catch (error) {
-        console.log("Error routing POST /newfurniture", error)
-    }
 })

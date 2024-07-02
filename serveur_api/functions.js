@@ -15,24 +15,13 @@ pool.on("error", (error, client) => {
     process.exit(-1);
 })
 
-// ==== Connection as a single Client
-// == The 'SELECT NOW()' query is basic to test a connection
-// == even without any tables in DB
-async function connection() {
 
-    const client = new Client({
-        connectionString,
-    })
-    await client.connect();
 
-    const requestResult = await client.query('SELECT * from users');
-    console.log(requestResult.rows)
-
-    await client.end();
+module.exports = {
+    addUserToDatabase,
+    checkDoublonMailDb,
+    addFurniture
 }
-//connection();
-
-module.exports = { addUserToDatabase, checkDoublonMailDb }
 
 async function checkDoublonMailDb(email) {
     try {
@@ -92,13 +81,13 @@ async function addUserToDatabase(name, surname, email, password) {
 
 //addUserToDatabase('William', 'Lawson', 'onice.com', 'onzerocks')//
 
-async function addFurniture(category, material, condition, color_main, color_secondary, dimensions, price) {
+async function addFurniture(categoryId, materialId, conditionId, color_mainId, color_secondaryId, dimensions, price) {
     const client = await pool.connect(); //connexion du client //
     try {
         await client.query('pending routing /addFurniture'); //attente request du client au niveau du server//
 
-        const insertFurnitureText = 'INSERT INTO furniture (category, material, condition, color_main, color_secondary, dimensions, price) VALUES ($1, $2, $3, $4, $5, $6, $7)',  //écrit grâce à la request SQL les columns en texte avec les params ($) need ligne under//
-        const insertFurnitureValues = [category, material, condition, color_main, color_secondary, dimensions, price]; //définition des paramètres ($)//
+        const insertFurnitureText = 'INSERT INTO furniture (category, material, condition, color_main, color_secondary, dimensions, price) VALUES ($1, $2, $3, $4, $5, $6, $7)';  //écrit grâce à la request SQL les columns en texte avec les params ($) need ligne under//
+        const insertFurnitureValues = [categoryId, materialId, conditionId, color_mainId, color_secondaryId, dimensions, price]; //définition des paramètres ($)//
         const resultat = await client.query(insertFurnitureText, insertFurnitureValues); //dans une const resultat fait le lien avec le texte et les valeurs correspondantes//
         console.log(resultat)
 
@@ -108,4 +97,4 @@ async function addFurniture(category, material, condition, color_main, color_sec
     }
 }
 
-addFurniture('chaise', 'bois', 'bon état', 'rouge', 'blanc', '90x40x35', '15')
+// addFurniture('chaise', 'bois', 'bon état', 'rouge', 'blanc', '90x40x35', '15')
