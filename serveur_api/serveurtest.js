@@ -7,7 +7,6 @@ const {
     getFurnituresByCategory,
     getFurnitureById } = require("./queries.js");
 
-
 require("dotenv").config();
 const pg = require("pg");
 const { Pool, Client } = pg;
@@ -17,8 +16,7 @@ const pool = new Pool({
     connectionString
 });
 
-
-// Necessity tu use a middleware to retrieved infos from a POST form
+// Necessity to use a middleware to retrieved infos from a POST form
 app.use(express.urlencoded({ extended: true }))
 
 // importing the router at root for documentation
@@ -121,11 +119,10 @@ app.post("/newuser", async(request, response)=> {
         }
        
     } catch (error) {
-        console.log('error')
+        console.log("Error routing POST /newentry", error)
     }
 
       });
-    
 
 
 //app.post()
@@ -133,4 +130,18 @@ app.post("/newuser", async(request, response)=> {
 app.listen(9090, function () {
     console.log('Mon serveur écoute sur le port 9090')
 
+})
+
+app.post("/newfurniture", async (request, response) => {
+
+    try {
+        const new_user_furniture = request.body.id
+        const new_furniture = request.body.id
+        console.log(request.body)
+
+        response.sendStatus(200);
+        response.end();
+    } catch (error) {
+        console.log("Error routing POST /newfurniture", error)
+    }
 })

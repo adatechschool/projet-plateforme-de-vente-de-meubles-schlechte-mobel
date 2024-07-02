@@ -109,7 +109,7 @@ Where
 -- === Params: Starting id & max number of responses === --
 SELECT
   furnitures.furniture_id AS id,
-  furniture_user.user_id as seller_id,
+  furniture_user.user_id AS seller_id,
   categories.name AS category,
   materials.name AS material,
   conditions.name AS condition,
@@ -163,4 +163,3 @@ order by
   id
 limit
   $3;
-

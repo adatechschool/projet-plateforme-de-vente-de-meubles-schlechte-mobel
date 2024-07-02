@@ -10,8 +10,8 @@ const pool = new Pool({
     connectionString
 });
 // ==== Checking errors when idle
-pool.on("error", (err, client) => {
-    console.error("Error on idle client", err);
+pool.on("error", (error, client) => {
+    console.error("Error on idle client", error);
     process.exit(-1);
 })
 
@@ -71,15 +71,13 @@ async function addUserToDatabase(name, surname, email, password) {
         const yadoublon = await checkDoublonMailDb(email)
         if (!yadoublon) {
 
-
-
             //ajouter une nouvelle ligne à la  table
             const result = await client.query(
                 'INSERT INTO users (name, surname, email, password) VALUES ($1,$2,$3,$4)',
                 [name, surname, email, password]
             );
             console.log(`Ajouté ${result.rowCount} ligne(s)`)
-            
+
             await client.end();
             return true
         } else {
@@ -90,29 +88,24 @@ async function addUserToDatabase(name, surname, email, password) {
     } catch (error) {
         console.log(error)
     }
-
-
 }
-addUserToDatabase('William', 'Lawson', 'onice.com', 'onzerocks')
 
-// ==== Connecting with a pool for a single query
-// == Let's the pool open
-async function singlePoolQuery() {
+//addUserToDatabase('William', 'Lawson', 'onice.com', 'onzerocks')//
 
-    const response = await pool.query('SELECT NOW()');
-    console.log(response.rows);
+async function addFurniture(category, material, condition, color_main, color_secondary, dimensions, price) {
+    const client = await pool.connect(); //connexion du client //
+    try {
+        await client.query('pending routing /addFurniture'); //attente request du client au niveau du server//
+
+        const insertFurnitureText = 'INSERT INTO furniture (category, material, condition, color_main, color_secondary, dimensions, price) VALUES ($1, $2, $3, $4, $5, $6, $7)',  //écrit grâce à la request SQL les columns en texte avec les params ($) need ligne under//
+        const insertFurnitureValues = [category, material, condition, color_main, color_secondary, dimensions, price]; //définition des paramètres ($)//
+        const resultat = await client.query(insertFurnitureText, insertFurnitureValues); //dans une const resultat fait le lien avec le texte et les valeurs correspondantes//
+        console.log(resultat)
+
+        client.release();
+    } catch (error) {
+        console.log("Error routing /addFurniture", error)
+    }
 }
-//singlePoolQuery();
 
-// ==== Connecting with a Client from a Pool, use it,
-// == then return the Client to the Pool to be ready for next use
-async function queryWithPool() {
-
-    const client = await pool.connect();
-    const response = await client.query('SELECT * from test');
-    console.log(response.rows);
-
-    // Release the Client we took from Pool
-    client.release();
-}
-// queryWithPool();
+addFurniture('chaise', 'bois', 'bon état', 'rouge', 'blanc', '90x40x35', '15')
