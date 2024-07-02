@@ -1,7 +1,8 @@
 
 const express = require('express');
 const app = express();
-const {addToDatabase}=require('./index.js') 
+
+const { addUserToDatabase } = require('./functions.js')
 
 const {
     getFurnituresByCategory,
@@ -100,28 +101,32 @@ app.post("/userregistration", (request, response) => {
     response.sendStatus(200);
     response.end();
 })
-app.post("/newentry", async(request, response)=> {
+app.post("/newuser", async (request, response) => {
 
     try {
-        const name =request.body.name
+        const name = request.body.name
         const surname = request.body.surname
-    console.log(request.body)
-  
-        //const ok=await addToDatabase(name, surname)
-        response.sendStatus(200);
-        response.end();
+        const email = request.body.email
+        const password = request.body.password
+        console.log(request.body)
+
+        const ok = await addUserToDatabase(name, surname, email, password)
+
+        if (ok) {
+            response.sendStatus(200);
+            response.end();
+        }
+        else {
+            response.sendStatus(403);
+            response.end();
+        }
+
     } catch (error) {
         console.log('error')
     }
 
-    /*res.status(200).json({
-        status: "success",
-        // results: tours.length,
-        data: {
-          tours: "Hello World", // if the key and the value have the same value we dont need to specify both just one
-        },*/
-      });
-    
+});
+
 
 
 //app.post()

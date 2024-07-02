@@ -6,7 +6,9 @@ const {
     getFurnituresByCategory,
     getFurnitureById,
     getAllFurnitures,
-    getFurnituresByColor } = require("./queries.js");
+    getFurnituresByColor,
+    getFurnituresByCondition,
+    getFurnituresByPrice } = require("./queries.js");
 
 
 module.exports = { router }
@@ -77,6 +79,44 @@ router.route("/furnitures/color")
 
         } catch (error) {
             console.log("Error routing GET /furnitures/color", error);
+            response.sendStatus(400);
+            response.end();
+        }
+    })
+
+// ==== Condition filter
+router.route("/furnitures/condition")
+    .get(async (request, response) => {
+        try {
+            const conditionId = request.query.id;
+            const limit = request.query.limit;
+            const data = await getFurnituresByCondition(conditionId, limit);
+
+            response.json(data);
+            response.end();
+
+        } catch (error) {
+            console.log("Error routing GET /furnitures/condition", error);
+            response.sendStatus(400);
+            response.end();
+        }
+    })
+
+// ==== Price filter
+router.route("/furnitures/price")
+    .get(async (request, response) => {
+        try {
+            const minPrice = parseInt(request.query.min);
+            const maxPrice = parseInt(request.query.max);
+            const limit = request.query.limit;
+
+            const data = await getFurnituresByPrice(minPrice, maxPrice, limit);
+
+            response.json(data);
+            response.end();
+
+        } catch (error) {
+            console.log("Error routing GET /furnitures/price", error);
             response.sendStatus(400);
             response.end();
         }
