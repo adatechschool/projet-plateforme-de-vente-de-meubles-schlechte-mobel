@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
 import { ArrowDownWideNarrow } from "lucide-react";
+import DropdownFilter from "./DropdownFilter";
 
 // import styles from "./Footer.module.css"; // Utilisation de CSS Modules pour le style
 
@@ -21,10 +22,8 @@ function Navbar() {
 
   return (
     <div className="flex justify-between items-center p-6 h-14 w-full bg-[#ffedd5] border-t-2 border-[#b77955]">
-      <button>
-        <ArrowDownWideNarrow />
-      </button>
-      <filter />
+      <ArrowDownWideNarrow />
+      <DropdownFilter />
       <Link href="/furniture/catalogue">Chaise</Link>
       <Link href="/furniture/catalogue">Fauteuils</Link>
       <Link href="/furniture/catalogue">Tables</Link>
