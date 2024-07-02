@@ -3,7 +3,7 @@ import Input from "@/components/input";
 
 const SellingFurniture = () => {
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-2 gap-3">
       <div>
         <label className="underline text-sm">Catégorie:</label>
         <Input placeholder="Catégorie" type="text" />
@@ -16,12 +16,17 @@ const SellingFurniture = () => {
 
       <div>
         <label className="underline text-sm">Couleur:</label>
-        <Input placeholder="Couleur" type="text" />
+        <Input placeholder="Couleur" type="color" />
       </div>
 
       <div>
         <label className="underline text-sm">Prix:</label>
         <Input placeholder="Prix" type="number" />
+      </div>
+
+      <div className="col-span-2">
+        <label className="underline text-sm">État:</label>
+        <Input placeholder="État" type="number" />
       </div>
 
       <div className="col-span-2">

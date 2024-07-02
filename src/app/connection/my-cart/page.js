@@ -4,19 +4,27 @@ import React from "react";
 import { MyCard } from "../../../components/mycard";
 // import { Navbar } from "flowbite-react"; // Commented out or remove this line
 
-const data = [{ title: "Titre1", description: "description1" }];
+const data = [{ title: "Mon panier", description: "description1" }];
 
 const MyCart = () => {
   return (
-    <div className="relative flex-1 min-h-full bg-cover bg-[url('/panier.jpg')] flex items-center justify-center w-full">
-      <div className="absolute inset-0 bg-grey/30 backdrop-blur-sm"></div>
-      {/* Blurred overlay */}
-      <div className="relative w-full max-w-screen-lg flex flex-wrap justify-center items-center gap-16">
-        {data.map((d) => (
-          <div className="w-full sm:w-1/2 lg:w-1/3" key={d.title}>
-            <MyCard title={d.title} description={d.description} />
+    <div className="flex-1 min-h-full bg-cover bg-[url('/panier.jpg')] flex flex-col items-start justify-start w-full">
+      <div className="flex-1 min-h-full bg-white/10 w-full flex items-center justify-center">
+        <div className="backdrop-blur-sm bg-white/10 rounded-xl w-2/3 h-96 flex flex-col justify-start items-center p-4">
+          <p className="text-xl font-bold mb-4">Mon panier</p>
+          <div className="grid grid-cols-2 w-full gap-6">
+            <div className="flex flex-col items-center p-10">
+              <p className="text-md p-4">
+                EXEMPLE D'UN MEUBLE DANS LE PANIER(PHOTO)
+              </p>
+            </div>
+            <div className="flex flex-col items-center p-10">
+              <p className="text-md p-4">
+                PRIX + COMBIEN D'ÉLÉMENTS AJOUTÉS AU PANIER
+              </p>
+            </div>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
