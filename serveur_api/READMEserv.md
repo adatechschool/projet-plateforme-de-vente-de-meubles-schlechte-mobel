@@ -102,3 +102,9 @@ Requête DB pour récupérer tous les meubles, *limit* en query params
 
 **getFurnituresByColor(colorId, maxNumberResponse = 10)**
 Cherche la colorId dans les couleurs principales ou secondaires, *limit* en query params
+
+**getFurnituresByCondition(conditionId, maxNumberResponse = 10)**
+Requête DB basée sur la condition du meuble par ID, *limit* en query params
+
+**getFurnituresByPrice(minPrice = 1, maxPrice = 5000, maxNumberResponse = 10)**
+Requête DB avec un range de prix. 3 query params *min*, *max* et *limit*
