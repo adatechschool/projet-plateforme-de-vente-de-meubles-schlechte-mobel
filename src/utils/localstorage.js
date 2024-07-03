@@ -7,15 +7,16 @@ export const LocalStorage = {
     localStorage.setItem(key, JSON.stringify(value));
   },
   getItem: (key) => {
-    const data = localStorage.getItem(key);
 
     try {
+      const data = localStorage.getItem(key);
       //Nous permet de retrouver le vrai type car localstorage.setItem ne prend que des string.
       return JSON.parse(data);
-    } catch {
+    } catch (error) {
       //Si le JSON.parse échoue, ça veut dire que l'on ne peut pas parser.
       //=> on retourne la valeur telle quelle.
-      return data;
+      return
+      // return data;
     }
   },
 };
