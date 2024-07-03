@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import { MyCard } from "../../../components/mycard";
+import { fetchCategories } from "@/utils/data";
 
 const data = [
   { title: "Titre1", description: "description1" },
@@ -14,6 +15,9 @@ const data = [
 ];
 
 const CataloguePage = () => {
+
+  fetchCategories();
+
   return (
     <div className="relative flex-1 min-h-full bg-cover bg-[url('/catalogue.jpg')] flex items-center justify-center w-full">
       <div className="absolute top-0 bottom-0 backdrop-blur-sm bg-white/10 min-h-full w-full">
@@ -25,8 +29,8 @@ const CataloguePage = () => {
                   href="/furniture/item"
                   className="w-4/5 hover:cursor-pointer"
                 >
-                  <MyCard title={d.title} description={d.description} />
                 </Link>
+                <MyCard title={d.title} description={d.description} />
               </div>
             ))}
           </div>
