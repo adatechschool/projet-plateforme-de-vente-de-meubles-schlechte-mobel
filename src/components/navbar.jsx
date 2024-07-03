@@ -25,7 +25,7 @@ function Navbar() {
       <ArrowDownWideNarrow />
       <DropdownFilter />
       <Link href="/furniture/catalogue">Chaise</Link>
-      <Link href="/furniture/catalogue">Fauteuils</Link>
+      <Link href="/furniture/catalogue?id=2">Fauteuils</Link>
       <Link href="/furniture/catalogue">Tables</Link>
       <Link href="/furniture/catalogue">Canapés</Link>
       <Link href="/furniture/catalogue">Commodes</Link>
