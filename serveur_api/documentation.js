@@ -54,6 +54,16 @@ documentationRoute.all("/", (req, res) => {
                 queryKeywords: ["min", "max", "limit"],
                 example: "/furnitures/price?min=700&max=2000"
             },
+            {
+                info: "[POST] Add a new user in DB without any doppelganger",
+                at: "/newuser",
+                body: {
+                    name: "name",
+                    surname: "surname",
+                    email: "email",
+                    password: "password"
+                }
+            },
         ]
     )
     res.end();
