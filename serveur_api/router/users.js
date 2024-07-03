@@ -75,8 +75,24 @@ const userRouter = ({ app }) => {
       return;
     }
 
+    //Creer une session
+
+    //Get current epoch
+    const currentEpoch = new Date().getTime();
+    //Add 15 jours en millisecond
+    const expiresAtInMilliseconds = currentEpoch + 15 * 24 * 60 * 60 * 1000;
+    //Transform en date
+    const date = new Date(expiresAtInMilliseconds).toISOString();
+
+    const session = await prismaClient.sessions.create({
+      data: {
+        userid: user.user_id,
+        expiresat: date,
+      },
+    });
+
     res.status(200);
-    res.json({ count: 1, data: user });
+    res.json({ count: 1, data: { user, session } });
   });
 
   app.post("/register/user", async (req, res) => {

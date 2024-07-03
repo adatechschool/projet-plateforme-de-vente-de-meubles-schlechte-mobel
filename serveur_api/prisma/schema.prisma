@@ -92,5 +92,14 @@ model users {
   phone          Int?             @db.SmallInt
   address        String?
   furniture_user furniture_user[]
+  sessions       sessions[]
   roles          roles?           @relation(fields: [role], references: [role_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model sessions {
+  id        Int      @id @default(autoincrement())
+  userid    Int?
+  expiresat DateTime @db.Timestamptz(3)
+  createdat DateTime @default(now()) @db.Timestamptz(3)
+  users     users?   @relation(fields: [userid], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
 }

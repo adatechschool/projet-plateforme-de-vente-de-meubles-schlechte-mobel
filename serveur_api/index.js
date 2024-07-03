@@ -2,6 +2,7 @@
 const express = require("express");
 
 const { userRouter } = require("./router/users");
+const { furnitureRouter } = require("./router/furnitures");
 
 //On crée une app express
 const app = express();
@@ -12,12 +13,13 @@ const data = [];
 
 app.use(express.json());
 
-app.get("/health", (_, res) => {
-  res.status(200);
-  res.json({ message: "everything is fine !" });
-});
+// app.get("/health", (_, res) => {
+//   res.status(200);
+//   res.json({ message: "everything is fine !" });
+// });
 
 userRouter({ app });
+furnitureRouter({ app });
 
 app.post("/furnitures", (req, res) => {
   const body = req.body;

@@ -62,5 +62,5 @@ VALUES
                 'Laurélyne',
                 'Fleury',
                 'laurelyne@fleury.net',
-                'kittycat7'
+                '$2b$10$VHLHWskAYIibIDAO2NebyuBIzeHnWpwtG4/fm.Q.KxYUaCVwHcgHu' --kittycat7
         );
