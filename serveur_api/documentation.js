@@ -42,6 +42,18 @@ documentationRoute.all("/", (req, res) => {
                 queryKeywords: ["id", "limit"],
                 example: "/furnitures/color?id=2"
             },
+            {
+                info: "Retrieve all furnitures by condition id with a limit",
+                at: "/furnitures/condition",
+                queryKeywords: ["id", "limit"],
+                example: "/furnitures/condition?id=4"
+            },
+            {
+                info: "Retrieve all furnitures within a price range",
+                at: "/furnitures/price",
+                queryKeywords: ["min", "max", "limit"],
+                example: "/furnitures/price?min=700&max=2000"
+            },
         ]
     )
     res.end();
