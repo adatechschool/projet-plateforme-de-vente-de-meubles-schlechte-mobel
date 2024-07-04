@@ -3,7 +3,7 @@ import React from "react";
 const Title = () => {
   return (
     <h1 className="text-2xl font-bold flex justify-center items-center m-4">
-      Annonces des clients
+      Mon stock
     </h1>
   );
 };
@@ -12,21 +12,14 @@ const Text = (props) => {
   return <p className="text-sm">{props.description}</p>;
 };
 
-const ButtonValidation = () => {
-  return (
-    <button className="bg-[#050505] text-white text-sm rounded-md px-3 py-1 mb-2">
-      Valider
-    </button>
-  );
-};
-
-const ButtonDenied = () => {
-  return (
-    <button className="bg-[#050505] text-white text-sm rounded-md px-3 py-1">
-      Refuser
-    </button>
-  );
-};
+// TO Do faire un bouton pour commander au fournisseur
+// const ButtonValidation = () => {
+//   return (
+//     <button className="bg-[#050505] text-white text-sm rounded-md px-3 py-1 mb-2">
+//       Valider
+//     </button>
+//   );
+// };
 
 const Card = ({ title, image, description }) => {
   return (

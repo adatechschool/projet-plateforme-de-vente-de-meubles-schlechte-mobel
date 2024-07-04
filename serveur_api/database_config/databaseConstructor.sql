@@ -56,4 +56,12 @@ CREATE TABLE
         user_id integer REFERENCES users (user_id)
     );
 
+CREATE TABLE IF NOT EXISTS sessions (
+        id serial PRIMARY KEY,
+        userId integer REFERENCES users (user_id),
+
+        expiresAt timestamp(3) with time zone NOT NULL,
+
+        createdAt timestamp(3) with time zone DEFAULT now() NOT NULL,
+    )
 -- =========== END ============== --
