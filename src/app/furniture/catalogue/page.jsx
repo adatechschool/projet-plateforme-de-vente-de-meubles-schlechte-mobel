@@ -45,7 +45,7 @@ export default function CataloguePage() {
   // })
   // ============== END TEST ===================
 
-  const [notredata, setData] = useState(null)
+  const [notreData, setData] = useState(null)
   const [isLoading, setLoading] = useState(true)
   // const [superId, setSuperId] = useState()
 
@@ -62,16 +62,16 @@ export default function CataloguePage() {
   }, [])
 
   if (isLoading) return <p>Loading...</p>
-  if (!notredata) return <p>No profile data</p>
+  if (!notreData) return <p>No profile data</p>
 
   return (
     <div className="relative -z-10 flex-1 min-h-full bg-cover bg-[url('/catalogue.jpg')] flex items-center justify-center w-full">
       <div className="absolute top-0 bottom-0 backdrop-blur-sm bg-white/10 min-h-full w-full">
         <div className="flex justify-center items-center w-full">
           <div className="grid grid-cols-3 gap-6 p-6">
-            <span className="z-50 text-black">Data:{notredata.dimensions}</span>
+            {/* <span className="z-50 text-black">Data:{notreData.dimensions}</span> */}
 
-            {/* {data.map((d) => (
+            {hardCodedData.map((d) => (
               <div className="flex justify-center items-center" key={d.title}>
                 <Link
                   href="/furniture/item"
@@ -80,7 +80,7 @@ export default function CataloguePage() {
                 </Link>
                 <MyCard title={d.title} description={d.description} />
               </div>
-            ))} */}
+            ))}
 
           </div>
         </div>
