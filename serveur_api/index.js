@@ -3,6 +3,7 @@ const express = require("express");
 
 const { userRouter } = require("./router/users");
 const { furnitureRouter } = require("./router/furnitures");
+const cors = require("cors");
 
 //On crée une app express
 const app = express();
@@ -12,6 +13,14 @@ const port = process.env.PORT ?? 5001;
 const data = [];
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  })
+);
 
 // app.get("/health", (_, res) => {
 //   res.status(200);
@@ -35,10 +44,10 @@ app.post("/furnitures", (req, res) => {
   res.json({ data: elementAInserer });
 });
 
-app.get("/furnitures", (_, res) => {
-  res.status(200);
-  res.json({ data: data });
-});
+// app.get("/furnitures", (_, res) => {
+//   res.status(200);
+//   res.json({ data: data });
+// });
 
 app.all("*", (_, res) => {
   res.status(404);

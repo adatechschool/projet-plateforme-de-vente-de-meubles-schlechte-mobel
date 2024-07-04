@@ -336,6 +336,40 @@ const furnitureRouter = ({ app }) => {
       res.status(200), res.json({ data: updatedFurniture, count: 1 });
     }
   );
+
+  app.get("/furnitures", async (req, res) => {
+    const { id: categoryId } = req.query;
+
+    //Vérif que la catégory existe
+    const category = await prismaClient.categories.findFirst({
+      where: {
+        category_id: Number(categoryId),
+      },
+    });
+
+    if (!category) {
+      res.status(400);
+      res.json({ message: "La catégorie demandée n'existe pas" });
+      return;
+    }
+
+    const furnitures = await prismaClient.furnitures.findMany({
+      where: {
+        category: {
+          equals: Number(categoryId),
+        },
+      },
+      include: {
+        materials: true,
+        colors_furnitures_color_mainTocolors: true,
+        colors_furnitures_color_secondaryTocolors: true,
+        conditions: true,
+        categories: true,
+      },
+    });
+
+    res.json({ count: furnitures.length, data: furnitures });
+  });
 };
 
 module.exports = {

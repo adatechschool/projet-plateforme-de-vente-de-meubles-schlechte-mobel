@@ -23,8 +23,8 @@ function Navbar() {
 
   return (
     <div className="flex justify-between items-center p-6 h-14 w-full bg-[#ffedd5] border-t-2 border-[#b77955]">
-      <ArrowDownWideNarrow />
-      <DropdownFilter />
+      {/* <ArrowDownWideNarrow /> */}
+      {/* <DropdownFilter /> */}
       <Link href="/furniture/catalogue?id=1">Chaise</Link>
       <Link href="/furniture/catalogue?id=2">Fauteuils</Link>
       <Link href="/furniture/catalogue?id=3">Tables</Link>
