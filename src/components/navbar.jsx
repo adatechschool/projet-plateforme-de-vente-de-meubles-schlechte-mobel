@@ -24,12 +24,12 @@ function Navbar() {
     <div className="flex justify-between items-center p-6 h-14 w-full bg-[#ffedd5] border-t-2 border-[#b77955]">
       <ArrowDownWideNarrow />
       <DropdownFilter />
-      <Link href="/furniture/catalogue">Chaise</Link>
+      <Link href="/furniture/catalogue?id=1">Chaise</Link>
       <Link href="/furniture/catalogue?id=2">Fauteuils</Link>
-      <Link href="/furniture/catalogue">Tables</Link>
-      <Link href="/furniture/catalogue">Canapés</Link>
-      <Link href="/furniture/catalogue">Commodes</Link>
-      <Link href="/furniture/catalogue">Lampes</Link>
+      <Link href="/furniture/catalogue?id=3">Tables</Link>
+      <Link href="/furniture/catalogue?id=4">Canapés</Link>
+      <Link href="/furniture/catalogue?id=5">Armoires</Link>
+      <Link href="/furniture/catalogue?id=6">Lampes</Link>
     </div>
   );
 }
