@@ -5,6 +5,7 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import { ArrowDownWideNarrow } from "lucide-react";
 import DropdownFilter from "./DropdownFilter";
+import { fetchCategories } from "@/utils/data";
 
 // import styles from "./Footer.module.css"; // Utilisation de CSS Modules pour le style
 
