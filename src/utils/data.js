@@ -29,7 +29,7 @@ export function anyFetch(id) {
 }
 
 export async function fetchItem(id) {
-    const url = `localhost:9090/furnitures/?${id}`;
+    const url = `http://127.0.0.1:9090/furnitures/?${id}`;
     try {
         const response = await fetch(url);
 
@@ -47,6 +47,6 @@ export async function fetchItem(id) {
 
 
 
-} 
+}
 //exportation de la fonction
 //export default { fetchItem };
