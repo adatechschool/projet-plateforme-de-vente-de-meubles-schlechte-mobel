@@ -1,6 +1,7 @@
 
 const express = require('express');
 const app = express();
+const cors = require("cors");
 
 const { addUserToDatabase } = require('./functions.js')
 
@@ -18,6 +19,8 @@ const pool = new Pool({
     connectionString
 });
 
+app.use(cors());
+app.options("*", cors());
 
 // Necessity tu use a middleware to retrieved infos from a POST form
 app.use(express.urlencoded({ extended: true }))
