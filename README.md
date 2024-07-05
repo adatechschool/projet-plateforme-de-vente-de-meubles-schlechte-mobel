@@ -1,7 +1,5 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-example de push
-
 ## Getting Started
 
 First, run the development server:
@@ -39,15 +37,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## LUNDI 24 JUIN - DÉBUT PROJET ##
 
-## Front 
+## Front
+
 Découpage URL localhost:3000/pageaccueil/meubles/détails_meubles
 trois découpages front
 Découpage différent du front, par ex une request suffisante pour fetch les meubles sur les trois pages
 
-
 ## LUNDI 24 JUIN - DÉBUT PROJET ##
 
-## Front 
+## Front
+
 Découpage URL localhost:3000/pageaccueil/meubles/détails_meubles
 trois découpages front
 Découpage différent du front, par ex une request suffisante pour fetch les meubles sur les trois pages
